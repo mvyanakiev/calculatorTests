@@ -20,7 +20,7 @@ namespace calculatorTest
         [Test]
         public void CalculateNormalValues()
         {
-            this.Driver.Navigate().GoToUrl("https://aqueous-depths-68559.herokuapp.com");
+            this.Driver.Navigate().GoToUrl("https://quantitiy-calculator.herokuapp.com");
             Thread.Sleep(1000); // изчакване 
             var quantity = Driver.FindElement(By.Id("quantity"));
             quantity.SendKeys("100");
@@ -31,13 +31,12 @@ namespace calculatorTest
             var bleed = Driver.FindElement(By.Id("bleed"));
             bleed.SendKeys("1.5");
             Driver.FindElement(By.XPath("/html/body/div/div/form/fieldset/div[6]/div/button")).Click(); // click Calculate
-
             Thread.Sleep(500); // waiting 
 
             int expectedResult = 4;
+
             int pageResult =int.Parse(Driver.FindElement(By.Id("result")).GetAttribute("value"));
             Assert.IsTrue(pageResult == expectedResult);
-
             Thread.Sleep(500); // waiting
         }
 
